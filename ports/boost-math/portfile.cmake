@@ -6,6 +6,8 @@ vcpkg_from_github(
     REF boost-1.76.0
     SHA512 50967b962ac4b3cfc799733e5cbbcc15215c27135368a739d2441a70aa6e4a7ccfb617bf3ccd571201568d8bacb209d2a98acbe0593cde7714c7da9faa09ee17
     HEAD_REF master
+	PATCHES
+		policy_constexpr.patch
 )
 
 vcpkg_replace_string("${SOURCE_PATH}/build/Jamfile.v2" "import ../../config/checks/config" "import config/checks/config")

@@ -1,0 +1,16 @@
+diff --git "a/include/boost/math/policies/policy.hpp" "b/include/boost/math/policies/policy.hpp"
+index c08494c..cb6e129 100644
+--- "a/include/boost/math/policies/policy.hpp"
++++ "b/include/boost/math/policies/policy.hpp"
+@@ -22,9 +22,9 @@ namespace boost{ namespace math{
+ namespace tools{
+ 
+ template <class T>
+-constexpr int digits(BOOST_MATH_EXPLICIT_TEMPLATE_TYPE(T)) noexcept;
++BOOST_MATH_CONSTEXPR int digits(BOOST_MATH_EXPLICIT_TEMPLATE_TYPE(T)) noexcept;
+ template <class T>
+-constexpr T epsilon(BOOST_MATH_EXPLICIT_TEMPLATE_TYPE(T)) noexcept(std::is_floating_point<T>::value);
++BOOST_MATH_CONSTEXPR T epsilon(BOOST_MATH_EXPLICIT_TEMPLATE_TYPE(T)) noexcept(std::is_floating_point<T>::value);
+ 
+ }
+ 

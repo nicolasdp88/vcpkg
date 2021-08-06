@@ -1,0 +1,46 @@
+diff --git a/src/cctag/Bresenham.cpp b/src/cctag/Bresenham.cpp
+index b77952922..b3aedc4a2 100644
+--- a/src/cctag/Bresenham.cpp
++++ b/src/cctag/Bresenham.cpp
+@@ -12,13 +12,21 @@
+ 
+ #include <cmath>
+ 
++
++
+ namespace cctag {
+ 
++    template<typename T>
++    int sgn(T val)
++    {
++        return (T(0) < val) - (val < T(0));
++    }
++
+ static void updateXY(const float & dx, const float & dy, int & x, int & y,  float & e, int & stpX, int & stpY)
+ {
+ 	float a = std::abs(dy/dx);
+-	stpX = boost::math::sign<int>(dx);
+-	stpY = boost::math::sign<int>(dy);
++	stpX = sgn<int>(dx);
++	stpY = sgn<int>(dy);
+ 	e += a;
+ 	x += stpX;
+ 	if (e>=0.5f)
+@@ -74,7 +82,7 @@ EdgePoint* gradientDirectionDescent(
+         {
+             dx2 = imgDx.at<short>(p.y(),p.x());
+             dy2 = imgDy.at<short>(p.y(),p.x());
+-            dir = boost::math::sign<float>( dx2*dxRef+dy2*dyRef );
++            dir = sgn<float>( dx2*dxRef+dy2*dyRef );
+             dx = dir*dx2;
+             dy = dir*dy2;
+         }
+@@ -144,7 +152,7 @@ EdgePoint* gradientDirectionDescent(
+         {
+             dx2 = imgDx.at<short>(p.y(),p.x());
+             dy2 = imgDy.at<short>(p.y(),p.x());
+-            dir = boost::math::sign<float>( dx2*dxRef+dy2*dyRef );
++            dir = sgn<float>( dx2*dxRef+dy2*dyRef );
+             dx = dir*dx2;
+             dy = dir*dy2;
+         }
